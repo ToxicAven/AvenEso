@@ -1,0 +1,23 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.5.0'
+}
+
+group 'com.toxicaven'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.toxicaven.Converter'
+        )
+    }
+  from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+}
